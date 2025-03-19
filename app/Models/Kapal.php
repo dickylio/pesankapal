@@ -3,34 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kapal extends Model
 {
     protected $table = 'kapal';
     protected $fillable = [
         'id_fasilitas',
+        'gambar',
         'nama_kapal',
-        'kapasitas',
-        'harga_per_hari',
         'deskripsi',
+        'kapasitas',
+        'harga_tiket', 
         'status_kapal'
     ];
     
     #Relasi dengan tabel fasilitas
-    public function fasilitas()
+    public function fasilitas():belongsTo
     {
-        return $this->belongsTo(fasilitas::class);
+        return $this->belongsTo(fasilitas::class, 'id_fasilitas');
     }
 
     #Relasi dengan tabel pemesanankapal
-    public function pemesanankapal()
+    public function pemesanankapal():hasMany
     {
-        return $this->hasMany(PemesananKapal::class, 'id_pemesanankapal');
-    }
-
-    #Relasi dengan tabel fasilitaskapal
-    public function fasilitaskapal()
-    {
-        return $this->hasMany(FasilitasKapal::class, 'id_kapal');
+        return $this->hasMany(pemesanankapal::class);
     }
 }

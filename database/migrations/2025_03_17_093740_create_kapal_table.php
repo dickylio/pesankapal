@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('kapal', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_fasilitas')->references('id')->on('fasilitas')->onDelete('cascade');
+            $table->string('gambar');
             $table->string('nama_kapal');
-            $table->integer('kapasitas');
-            $table->decimal('harga_per_hari');
             $table->text('deskripsi');
+            $table->integer('kapasitas');
+            $table->decimal('harga_tiket');
             $table->enum('status_kapal', ['tersedia', 'sudah dipesan', 'dalam pemeliharaan']);
             $table->timestamp('created_at');
         });
