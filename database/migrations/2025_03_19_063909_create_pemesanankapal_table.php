@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fasilitaskapal', function (Blueprint $table) {
+        Schema::create('pemesanankapal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_kapal')->references('id')->on('kapal')->onDelete('cascade');
-            $table->foreignId('id_fasilitas')->references('id')->on('fasilitas')->onDelete('cascade');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fasilitaskapal');
+        Schema::dropIfExists('pemesanankapal');
     }
 };

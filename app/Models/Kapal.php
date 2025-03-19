@@ -10,6 +10,7 @@ class Kapal extends Model
 {
     protected $table = 'kapal';
     protected $fillable = [
+        'id_rute',
         'gambar',
         'nama_kapal',
         'kapasitas',
@@ -23,6 +24,12 @@ class Kapal extends Model
     public function fasilitas()
     {
         return $this->belongsToMany(Fasilitas::class, 'fasilitaskapal', 'id_kapal', 'id_fasilitas');
+    }
+
+    #Relasi dengan tabel Rute
+    public function rute():belongsTo
+    {
+        return $this->belongsTo(rute::class, 'id_rute');
     }
 
     #Relasi dengan tabel pemesanankapal
