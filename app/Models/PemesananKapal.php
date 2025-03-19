@@ -6,20 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class PemesananKapal extends Model
 {
-    protected $table = 'pemesanan_kapal';
+    protected $table = 'pemesanankapal';
     protected $fillable = [
         'id_pelanggan',
         'id_kapal',
-        'tanggal_check_in',
-        'tanggal_check_out',
-        'status_pemesanan',
+        'email',
         'total_harga'
     ];
 
     #Relasi dengan tabel pelanggan & kapal
     public function pelanggan()
     {
-        return $this->belongsTo(pelanggan::class);
+        return $this->belongsTo(pelanggan::class,'user_id');
     }
 
     public function kapal()

@@ -8,18 +8,18 @@ class Kapal extends Model
 {
     protected $table = 'kapal';
     protected $fillable = [
-        'id_fasilitas',
         'nama_kapal',
         'kapasitas',
-        'harga_per_hari',
+        'harga_tiket',
         'deskripsi',
         'status_kapal'
     ];
     
     #Relasi dengan tabel fasilitas
+    // In your Kapal model
     public function fasilitas()
     {
-        return $this->belongsTo(fasilitas::class);
+        return $this->belongsToMany(Fasilitas::class, 'fasilitaskapal', 'id_kapal', 'id_fasilitas');
     }
 
     #Relasi dengan tabel pemesanankapal
@@ -29,8 +29,8 @@ class Kapal extends Model
     }
 
     #Relasi dengan tabel fasilitaskapal
-    public function fasilitaskapal()
-    {
-        return $this->hasMany(FasilitasKapal::class, 'id_kapal');
-    }
+    // public function fasilitaskapal()
+    // {
+    //     return $this->hasMany(FasilitasKapal::class, 'id_kapal');
+    // }
 }

@@ -14,9 +14,9 @@ class Pelanggan extends Model
     ];
 
     #Relasi dengan tabel user
-    public function User()
+    public function user()
     {
-        return $this->hasMany(User::class, 'id_user');
+        return $this->belongsTo(User::class, 'id_user');
     }
 
     #Relasi dengan tabel pemesanankapal

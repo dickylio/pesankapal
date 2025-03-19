@@ -13,14 +13,14 @@ class FasilitasKapal extends Model
     ];
 
     #Relasi dengan tabel fasilitas
-    public function fasilitas()
-    {
-        return $this->belongsTo(Fasilitas::class);
-    }
+    // public function fasilitas()
+    // {
+    //     return $this->belongsTo(Fasilitas::class);
+    // }
 
-    #Relasi dengan tabel kapal
-    public function kapal()
-    {
-        return $this->belongsTo(Kapal::class, 'id_kapal');
-    }
+    // #Relasi dengan tabel kapal
+    // public function kapal()
+    // {
+    //     return $this->belongsTo(Kapal::class, 'id_kapal');
+    // }
 }
