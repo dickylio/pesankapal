@@ -13,7 +13,13 @@ return new class extends Migration
     {
         Schema::create('pemesanankapal', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('id_pelanggan')->references('id')->on('pelanggan')->onDelete('cascade');
+            $table->foreignId('id_kapal')->references('id')->on('kapal')->onDelete('cascade');
+            $table->date('tanggal_pemesanan');
+            $table->integer('jumlah_penumpang');
+            $table->enum('status_pemesanan', ['dipesan', 'dibatalkan', 'selesai']);
+            $table->decimal('total_harga');
+            $table->timestamp('created_at');
         });
     }
 
