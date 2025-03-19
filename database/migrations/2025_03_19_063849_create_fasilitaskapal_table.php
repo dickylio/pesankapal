@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pemesanankapal', function (Blueprint $table) {
+        Schema::create('fasilitaskapal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_pelanggan')->references('id')->on('pelanggan')->onDelete('cascade');
             $table->foreignId('id_kapal')->references('id')->on('kapal')->onDelete('cascade');
-            $table->date('tanggal_pemesanan');
-            $table->integer('jumlah_penumpang');
-            $table->enum('status_pemesanan', ['dipesan', 'dibatalkan', 'selesai']);
-            $table->decimal('total_harga');
-            $table->timestamp('created_at');
+            $table->foreignId('id_fasilitas')->references('id')->on('fasilitas')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pemesanankapal');
+        Schema::dropIfExists('fasilitaskapal');
     }
 };
