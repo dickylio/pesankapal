@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kapal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_fasilitas')->references('id')->on('fasilitas')->onDelete('cascade');
+            $table->foreignId('id_rute')->references('id')->on('rute')->onDelete('cascade');
             $table->string('gambar');
             $table->string('nama_kapal');
             $table->text('deskripsi');
