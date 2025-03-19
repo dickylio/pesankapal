@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Pelanggan extends Model
 {
     protected $table = 'pelanggan';
     protected $fillable = [
-        'id_user',
+        'user_id',
         'nomor_telepon',
         'alamat'
     ];
@@ -20,8 +22,8 @@ class Pelanggan extends Model
     }
 
     #Relasi dengan tabel pemesanankapal
-    public function pemesanankapal()
+    public function pemesanankapal():hasMany
     {
-         return $this->hasMany(pemesanankapal::class, 'id_pemesanankapal');
+         return $this->hasMany(pemesanankapal::class);
     }
 }

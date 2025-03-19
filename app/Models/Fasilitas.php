@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Fasilitas extends Model
 {
@@ -13,7 +14,7 @@ class Fasilitas extends Model
         'deskripsi'
     ];
 
-    public function kapal()
+    public function kapal(): hasMany
     {
         return $this->belongsToMany(Kapal::class, 'fasilitaskapal', 'id_fasilitas', 'id_kapal');
     }

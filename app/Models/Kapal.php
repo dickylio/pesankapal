@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Kapal extends Model
 {
@@ -12,6 +14,8 @@ class Kapal extends Model
         'kapasitas',
         'harga_tiket',
         'deskripsi',
+        'kapasitas',
+        'harga_tiket', 
         'status_kapal'
     ];
     
@@ -23,7 +27,7 @@ class Kapal extends Model
     }
 
     #Relasi dengan tabel pemesanankapal
-    public function pemesanankapal()
+    public function pemesanankapal():hasMany
     {
         return $this->hasMany(PemesananKapal::class, 'id_pemesanankapal');
     }

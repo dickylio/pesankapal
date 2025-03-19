@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('kapal', function (Blueprint $table) {
             $table->id();
+            $table->string('gambar');
             $table->string('nama_kapal');
+            $table->text('deskripsi');
             $table->integer('kapasitas');
             $table->decimal('harga_tiket');
-            $table->text('deskripsi');
-            $table->enum('status_kapal', ['tersedia', 'sudah penuh', 'dalam pemeliharaan']);
+            $table->enum('status_kapal', ['tersedia', 'sudah dipesan', 'dalam pemeliharaan']);
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
         });

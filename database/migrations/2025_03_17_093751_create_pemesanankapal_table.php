@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_pelanggan')->references('id')->on('pelanggan')->onDelete('cascade');
             $table->foreignId('id_kapal')->references('id')->on('kapal')->onDelete('cascade');
-            $table->date('tanggal_check_in');
-            $table->date('tanggal_check_out');
+            $table->date('tanggal_pemesanan');
+            $table->integer('jumlah_penumpang');
             $table->enum('status_pemesanan', ['dipesan', 'dibatalkan', 'selesai']);
             $table->decimal('total_harga');
             $table->timestamp('created_at');
