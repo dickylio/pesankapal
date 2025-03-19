@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\User;
 
 class Pelanggan extends Model
 {
@@ -18,7 +19,7 @@ class Pelanggan extends Model
     #Relasi dengan tabel user
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(User::class);
     }
 
     #Relasi dengan tabel pemesanankapal

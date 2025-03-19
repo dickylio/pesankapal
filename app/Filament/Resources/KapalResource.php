@@ -23,6 +23,8 @@ class KapalResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\FileUpload::make('gambar')
+                    ->required(),
                 Forms\Components\Select::make('id_fasilitas')
                     ->relationship('fasilitas', 'nama')
                     ->label('Fasilitas')
@@ -56,6 +58,8 @@ class KapalResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('gambar')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('fasilitas.nama')
                     ->listWithLineBreaks()
                     ->bulleted()

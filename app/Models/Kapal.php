@@ -10,12 +10,11 @@ class Kapal extends Model
 {
     protected $table = 'kapal';
     protected $fillable = [
+        'gambar',
         'nama_kapal',
         'kapasitas',
         'harga_tiket',
-        'deskripsi',
-        'kapasitas',
-        'harga_tiket', 
+        'deskripsi', 
         'status_kapal'
     ];
     

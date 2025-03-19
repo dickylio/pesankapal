@@ -23,7 +23,7 @@ class PelangganResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('id_user')
+                Forms\Components\Select::make('user_id')
                     ->required()
                     ->relationship('user', 'name',),
                 Forms\Components\TextInput::make('nomor_telepon')
@@ -40,7 +40,7 @@ class PelangganResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_user')
+                Tables\Columns\TextColumn::make('user_id')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('nomor_telepon')

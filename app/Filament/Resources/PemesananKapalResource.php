@@ -23,16 +23,35 @@ class PemesananKapalResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('id_user')
+                Forms\Components\Select::make('id_pelanggan')
                     ->required()
-                    ->relationship('user', 'name',),
-                Forms\Components\TextInput::make('email')
+                    ->relationship('pelanggan', 'id')
+                    ->preload()
+                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->user->name),
+                Forms\Components\DatePicker::make('tanggal_pemesanan')
+                    ->label('Tanggal Pemesanan')
+                    ->required(),
+                Forms\Components\TextInput::make('jumlah_penumpang')
+                    ->label('Jumlah Penumpang')
+                    ->maxLength('2')
+                    ->required(),
+                    Forms\Components\Select::make('status_pemesanan')
+                    ->options([
+                        'pending' => 'Pending',
+                        'success' => 'Success',
+                        'cancelled' => 'Cancelled',
+                    ])
+                    ->label('Status Pemesanan')
+                    ->required(),
+                Forms\Components\TextInput::make('total_harga')
+                    ->label('Total Harga')
                     ->required()
-                    ->relationship('user','email')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('alamat')
-                    ->required()
-                    ->maxLength(255),
+                    ->numeric()
+                    ->disabled()
+                    ->reactive()
+                    ->prefix('Rp')
+                    ->dehydrated(true),
+
             ]);
     }
 

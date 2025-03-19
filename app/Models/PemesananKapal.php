@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\Pelanggan;
 
 class PemesananKapal extends Model
 {
@@ -20,7 +21,7 @@ class PemesananKapal extends Model
     #Relasi dengan tabel pelanggan & kapal
     public function pelanggan():belongsTo
     {
-        return $this->belongsTo(pelanggan::class,'user_id');
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
     }
 
     public function kapal():belongsTo
