@@ -35,6 +35,9 @@ class KapalResource extends Resource
                 Forms\Components\TextInput::make('nama_kapal')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('id_rute')
+                ->relationship('rute', 'rute')
+                ->preload(),
                 Forms\Components\TextInput::make('kapasitas')
                     ->required()
                     ->numeric(),

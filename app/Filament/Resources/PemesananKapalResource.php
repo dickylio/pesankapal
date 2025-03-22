@@ -28,21 +28,57 @@ class PemesananKapalResource extends Resource
                     ->relationship('pelanggan', 'id')
                     ->preload()
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->user->name),
+                
+                Forms\Components\Select::make('id_kapal')
+                    ->label('Kapal')
+                    ->required()
+                    ->relationship('kapal', 'nama_kapal')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set, $get) {
+                        // Ambil data harga dari model kapal
+                        if ($state) {
+                            $kapal = \App\Models\Kapal::find($state);
+                            if ($kapal) {
+                                $jumlahPenumpang = $get('jumlah_penumpang') ?: 0;
+                                $hargaPerOrang = $kapal->harga_tiket;
+                                $totalHarga = $jumlahPenumpang * $hargaPerOrang;
+                                $set('total_harga', $totalHarga);
+                            }
+                        }
+                    }),
+                
                 Forms\Components\DatePicker::make('tanggal_pemesanan')
                     ->label('Tanggal Pemesanan')
                     ->required(),
+                
                 Forms\Components\TextInput::make('jumlah_penumpang')
                     ->label('Jumlah Penumpang')
                     ->maxLength('2')
-                    ->required(),
-                    Forms\Components\Select::make('status_pemesanan')
+                    ->required()
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set, $get) {
+                        // Kalkulasi ulang total harga ketika jumlah penumpang berubah
+                        $idKapal = $get('id_kapal');
+                        if ($idKapal) {
+                            $kapal = \App\Models\Kapal::find($idKapal);
+                            if ($kapal) {
+                                $jumlahPenumpang = $state ?: 0;
+                                $hargaPerOrang = $kapal->harga_tiket;
+                                $totalHarga = $jumlahPenumpang * $hargaPerOrang;
+                                $set('total_harga', $totalHarga);
+                            }
+                        }
+                    }),
+                
+                Forms\Components\Select::make('status_pemesanan')
                     ->options([
-                        'pending' => 'Pending',
-                        'success' => 'Success',
-                        'cancelled' => 'Cancelled',
+                        'dipesan' => 'Dipesan',
+                        'dibatalkan' => 'Dibatalkan',
+                        'selesai' => 'Selesai',
                     ])
                     ->label('Status Pemesanan')
                     ->required(),
+                
                 Forms\Components\TextInput::make('total_harga')
                     ->label('Total Harga')
                     ->required()
@@ -51,7 +87,6 @@ class PemesananKapalResource extends Resource
                     ->reactive()
                     ->prefix('Rp')
                     ->dehydrated(true),
-
             ]);
     }
 
@@ -59,17 +94,15 @@ class PemesananKapalResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id_booking')
-                    ->label('ID Pemesanan ')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('Pelanggan.user.name')
-                    ->label('Nama')
+                Tables\Columns\TextColumn::make('pelanggan.user.name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('user.email')
+                Tables\Columns\TextColumn::make('kapal.nama_kapal'),
+                Tables\Columns\TextColumn::make('tanggal_pemesanan'),
+                Tables\Columns\TextColumn::make('jumlah_penumpang'),
+                Tables\Columns\TextColumn::make('pelanggan.user.email')
                     ->label('Email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
+                Tables\Columns\TextColumn::make('pelanggan.alamat')
                     ->label('Alamat')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('total_harga')

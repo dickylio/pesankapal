@@ -26,6 +26,6 @@ class PemesananKapal extends Model
 
     public function kapal():belongsTo
     {
-        return $this->belongsTo(kapal::class);
+        return $this->belongsTo(kapal::class, 'id_kapal');
     }
 }

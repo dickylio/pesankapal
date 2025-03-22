@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Rute extends Model
 {
-    protected $table = 'kapal';
+    protected $table = 'rute';
     protected $fillable = [
         'rute'
     ];
