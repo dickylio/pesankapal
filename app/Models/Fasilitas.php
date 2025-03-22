@@ -16,6 +16,6 @@ class Fasilitas extends Model
 
     public function kapal(): hasMany
     {
-        return $this->belongsToMany(Kapal::class, 'fasilitaskapal', 'id_fasilitas', 'id_kapal');
+        return $this->hasMany(Kapal::class);
     }
 }

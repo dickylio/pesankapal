@@ -35,12 +35,6 @@ class Kapal extends Model
     #Relasi dengan tabel pemesanankapal
     public function pemesanankapal():hasMany
     {
-        return $this->hasMany(PemesananKapal::class, 'id_pemesanankapal');
+        return $this->hasMany(PemesananKapal::class);
     }
-
-    #Relasi dengan tabel fasilitaskapal
-    // public function fasilitaskapal()
-    // {
-    //     return $this->hasMany(FasilitasKapal::class, 'id_kapal');
-    // }
 }
