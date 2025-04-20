@@ -5,7 +5,7 @@ use App\Http\Controllers\Pelanggan\PelangganController;
 use App\Http\Controllers\PemesananKapalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SignInController;
-
+use App\Http\Controllers\KapalController;
 
 Route::get('/', function () {
     return view('home');})->name('home');
@@ -16,8 +16,7 @@ Route::get('/signin', function () {
 Route::get('/create', function () {
     return view('create');})->name('create');
 
-Route::get('/homebooking', function () {
-    return view('homebooking');})->name('homebooking');
+Route::get('/homebooking', [KapalController::class, 'index'])->name('homebooking');
 
 Route::get('/booking', function () {
     return view('booking');})->name('booking');

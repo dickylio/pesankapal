@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('pelanggan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nama_lengkap');
             $table->string('nomor_telepon');
+            $table->string('email')->unique();
             $table->string('alamat');
             $table->timestamps();
         });

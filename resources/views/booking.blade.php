@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boat Booking - Complete Profile</title>
+    <link rel="icon" type="images/x-icon" href="/images/logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
@@ -19,7 +20,7 @@
             </div>
             <div class="flex space-x-8">
                 <a href="/" class="text-gray-700 hover:text-blue-600">Home</a>
-                <a href="booking" class="text-gray-700 hover:text-blue-600">Booking</a>
+                <a href="homebooking" class="text-gray-700 hover:text-blue-600">Booking</a>
                 <a href="mybooking" class="text-gray-700 hover:text-blue-600">My Booking</a>
             </div>
             <div>
