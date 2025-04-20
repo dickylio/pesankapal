@@ -4,10 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Pelanggan\PelangganController;
 use App\Http\Controllers\PemesananKapalController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SignInController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/', function () {
     return view('home');})->name('home');
@@ -20,7 +18,6 @@ Route::get('/create', function () {
 
 Route::get('/homebooking', function () {
     return view('homebooking');})->name('homebooking');
-
 
 Route::get('/booking', function () {
     return view('booking');})->name('booking');
@@ -52,3 +49,8 @@ Route::prefix('users')->group(function () {
     Route::get('/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/store', [UserController::class, 'store'])->name('users.store');
 });
+
+// Rute untuk Sign In
+Route::get('/login', [SignInController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [SignInController::class, 'authenticate'])->name('login.authenticate');
+Route::post('/logout', [SignInController::class, 'logout'])->name('logout');

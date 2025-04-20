@@ -18,9 +18,8 @@
             <h1 class="text-2xl font-semibold text-center text-gray-800 mb-6">Sign in</h1>
             
             <!-- Login Form -->
-            <form>
-                @csrf
-                <form action="{{ route('') }}" method="POST">
+                <form action="{{ route('login.authenticate') }}" method="POST">
+                    @csrf
                 <!-- Email/Phone Field -->
                 <div class="mb-4">
                     <label class="block text-sm text-gray-600 mb-2">Email</label>
