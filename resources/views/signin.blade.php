@@ -19,16 +19,18 @@
             
             <!-- Login Form -->
             <form>
+                @csrf
+                <form action="{{ route('') }}" method="POST">
                 <!-- Email/Phone Field -->
                 <div class="mb-4">
-                    <label class="block text-sm text-gray-600 mb-2">Email or mobile phone number</label>
-                    <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <label class="block text-sm text-gray-600 mb-2">Email</label>
+                    <input type="text" name="email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
                 </div>
                 
                 <!-- Password Field -->
                 <div class="mb-6">
                     <label class="block text-sm text-gray-600 mb-2">Your password</label>
-                    <input type="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <input type="password" name="password" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
                 </div>
                 
                 <!-- Login Button -->

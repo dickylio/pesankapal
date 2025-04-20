@@ -10,29 +10,23 @@ use App\Http\Controllers\UserController;
 // });
 
 Route::get('/', function () {
-    return view('home');
-});
+    return view('home');})->name('home');
 
 Route::get('/signin', function () {
-    return view('signin');
-});
+    return view('signin');})->name('signin');
 
 Route::get('/create', function () {
-    return view('create');
-});
+    return view('create');})->name('create');
 
 Route::get('/homebooking', function () {
-    return view('homebooking');
-});
+    return view('homebooking');})->name('homebooking');
 
 
 Route::get('/booking', function () {
-    return view('booking');
-});
+    return view('booking');})->name('booking');
 
 Route::get('/mybooking', function () {
-    return view('mybooking');
-});
+    return view('mybooking');})->name('mybooking');
 
 
 // Rute untuk Pelanggan

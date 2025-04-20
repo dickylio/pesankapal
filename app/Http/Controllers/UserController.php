@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,7 +12,7 @@ class UserController extends Controller
     // Menampilkan form registrasi
     public function create()
     {
-        return view('register'); // Sesuaikan dengan nama file blade form pendaftaran
+        return view('create'); // Sesuaikan dengan nama file blade form pendaftaran
     }
 
     // Menyimpan data user baru
@@ -30,7 +30,6 @@ class UserController extends Controller
                              ->withErrors($validator)
                              ->withInput();
         }
-
         // Simpan ke database
         User::create([
             'name' => $request->name,
@@ -38,6 +37,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('login')->with('success', 'Akun berhasil dibuat!');
+        return redirect()->route('signin')->with('success', 'Akun berhasil dibuat!');
+
     }
 }

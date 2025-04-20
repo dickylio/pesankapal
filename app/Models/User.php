@@ -47,7 +47,7 @@ class User extends Authenticatable
         ];
     }
 
-    #Relasi dengan tabel user
+    #Relasi dengan tabel pelanggan
     public function pelanggan()
     {
         return $this->hasOne(Pelanggan::class);
