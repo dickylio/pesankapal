@@ -17,17 +17,18 @@
             <h1 class="text-3xl font-semibold text-gray-800 mb-8">Welcome to Kraken Boat</h1>
             
             <!-- Sign Up Form -->
-            <form class="space-y-5">
+            <form action="{{ route('users.store') }}" method="POST" class="space-y-5">
+                @csrf
                 <!-- Email Field -->
                 <div>
-                    <label for="email" class="block text-sm text-gray-600 mb-2">Email</label>
+                    <label  for="email" class="block text-sm text-gray-600 mb-2">Email</label>
                     <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
                 </div>
                 
                 <!-- Username Field -->
                 <div>
-                    <label for="username" class="block text-sm text-gray-600 mb-2">Username</label>
-                    <input type="text" id="username" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
+                    <label for="username" class="block text-sm text-gray-600 mb-2">Name</label>
+                    <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300">
                 </div>
                 
                 <!-- Password Field -->

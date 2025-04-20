@@ -21,7 +21,7 @@
                 <span class="font-semibold text-lg text-gray-800">Boat</span>
             </div>
             <div class="flex space-x-8">
-                <a href="homebooking" class="text-gray-700 hover:text-blue-600">Home</a>
+                <a href="home" class="text-gray-700 hover:text-blue-600">Home</a>
                 <a href="booking" class="text-gray-700 hover:text-blue-600">Booking</a>
                 <a href="mybooking" class="text-gray-700 hover:text-blue-600">My Booking</a>
             </div>
@@ -65,7 +65,25 @@
                         </select>
                     </div>
                 </div>
-                
+
+                <form action="/cari-jadwal" method="GET">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Jenis Kapal -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Jenis Kapal</label>
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-ship text-gray-500"></i>
+                                </div>
+                                <select name="jenis_kapal" class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                                    <option selected disabled>Pilih Kapal</option>
+                                    <option>Kapal Feri</option>
+                                    <option>Speed Boat</option>
+                                    <option>Kapal Pesiar</option>
+                                </select>
+                            </div>
+                        </div>
+
                 <!-- Tanggal Berangkat -->
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Tanggal Berangkat</label>
@@ -110,7 +128,13 @@
                     </div>
                 </div>
             </div>
-            
+            <!-- Tombol Submit -->
+            <div class="flex justify-end mt-6">
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-medium py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300">
+                CARI JADWAL
+            </button>
+            </div>
+        </form>
             <!-- Search Button -->
             <div class="flex justify-end mt-6">
                 <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 text-gray-800 font-medium py-2 px-6 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-300">

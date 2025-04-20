@@ -18,7 +18,7 @@
                     <span class="font-semibold text-lg text-gray-800">Boat</span>
                 </div>
                 <div class="flex space-x-8">
-                    <a href="homebooking" class="text-gray-700 hover:text-blue-600">Home</a>
+                    <a href="home" class="text-gray-700 hover:text-blue-600">Home</a>
                     <a href="booking" class="text-gray-700 hover:text-blue-600">Booking</a>
                     <a href="mybooking" class="text-gray-700 hover:text-blue-600">My Booking</a>
                 </div>
