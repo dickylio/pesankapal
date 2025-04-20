@@ -44,8 +44,8 @@
             </div>
             
             <!-- Form -->
-            @csrf
-            <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <form method="POST" action="{{ route('pelanggan.store') }}" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                @csrf
                 <!-- Left Column -->
                 <div class="space-y-4">
                     <!-- Name Field -->
@@ -57,7 +57,7 @@
                                     <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input type="text" class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Nama Lengkap">
+                            <input type="text" name="nama_lengkap" class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Nama Lengkap">
                         </div>
                     </div>
                     
@@ -70,7 +70,7 @@
                                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                                 </svg>
                             </div>
-                            <input type="tel"  class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Nomor Telepon">
+                            <input type="tel" name="nomor_telepon" class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Nomor Telepon">
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                 </svg>
                             </div>
-                            <input type="email" class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Email">
+                            <input type="email" name="email" class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Email">
                         </div>
                     </div>
                     
@@ -102,14 +102,12 @@
                                     <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <textarea class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 h-24" placeholder="Alamat Lengkap"></textarea>
+                            <textarea name="alamat_lengkap" class="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 rounded-md shadow-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-600 h-24" placeholder="Alamat Lengkap"></textarea>
                         </div>
                     </div>
                 </div>
-            </form>
-            
-            <!-- Submit Button -->
-            <div class="flex justify-center mt-8">
+                   <!-- Submit Button -->
+                <div class="flex justify-center mt-8">
                 <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-10 rounded-md shadow-md transition duration-300 flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
@@ -117,6 +115,9 @@
                     Simpan Informasi
                 </button>
             </div>
+            </form>
+            
+         
             
             <!-- Security Notice -->
             <div class="text-center mt-4 text-blue-100 text-sm">

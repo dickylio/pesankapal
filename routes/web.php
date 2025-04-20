@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Pelanggan\PelangganController;
+use App\Http\Controllers\PelangganController;
 use App\Http\Controllers\PemesananKapalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SignInController;
-use App\Http\Controllers\KapalController;
+
 
 Route::get('/', function () {
     return view('home');})->name('home');
@@ -16,7 +16,8 @@ Route::get('/signin', function () {
 Route::get('/create', function () {
     return view('create');})->name('create');
 
-Route::get('/homebooking', [KapalController::class, 'index'])->name('homebooking');
+Route::get('/homebooking', function () {
+    return view('homebooking');})->name('homebooking');
 
 Route::get('/booking', function () {
     return view('booking');})->name('booking');
@@ -24,16 +25,6 @@ Route::get('/booking', function () {
 Route::get('/mybooking', function () {
     return view('mybooking');})->name('mybooking');
 
-
-// Rute untuk Pelanggan
-Route::prefix('pelanggan')->group(function () {
-    Route::get('/', [PelangganController::class, 'index'])->name('pelanggan.index'); // Menampilkan daftar pelanggan
-    Route::get('/create', [PelangganController::class, 'create'])->name('pelanggan.create'); // Menampilkan form untuk membuat pelanggan baru
-    Route::post('/store', [PelangganController::class, 'store'])->name('pelanggan.store'); // Menyimpan pelanggan baru
-    Route::get('/show', [PelangganController::class, 'show'])->name('pelanggan.show'); // Menampilkan pelanggan berdasarkan ID
-    Route::put('/update', [PelangganController::class, 'update'])->name('pelanggan.update'); // Mengupdate pelanggan berdasarkan ID
-    Route::delete('/destroy', [PelangganController::class, 'destroy'])->name('pelanggan.destroy'); // Menghapus pelanggan berdasarkan ID
-});
 
 // Rute untuk Pemesanan Kapal
 Route::prefix('pemesanankapal')->group(function () {
@@ -53,3 +44,9 @@ Route::prefix('users')->group(function () {
 Route::get('/login', [SignInController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [SignInController::class, 'authenticate'])->name('login.authenticate');
 Route::post('/logout', [SignInController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->prefix('pelanggan')->group(function () {
+    Route::get('/', [PelangganController::class, 'index'])->name('pelanggan');
+    Route::get('/create', [PelangganController::class, 'create'])->name('pelanggan.create');
+    Route::post('/store', [PelangganController::class, 'store'])->name('pelanggan.store');
+});

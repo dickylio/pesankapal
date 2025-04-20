@@ -37,8 +37,8 @@ class KapalController extends Controller
         }
 
         // Use pagination for better performance
-        $kapals = $query->paginate(10);
+        $kapal = $query->paginate(10);
 
-        return view('ooking', compact('kapal'));
+        return view('booking', compact('kapal'));
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Pelanggan;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+
 use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,8 +34,10 @@ class PelangganController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+            'nama_lengkap' => 'required|string|max:15',
             'nomor_telepon' => 'required|string|max:15',
-            'alamat' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:pelanggan',
+            'alamat_lengkap' => 'required|string|max:255'
         ]);
 
         try {
@@ -44,7 +46,7 @@ class PelangganController extends Controller
                 $validated
             );
 
-            return redirect()->route('pemesanankapal')->with('success', 'Pelanggan created successfully.');
+            return redirect()->route('homebooking')->with('success', 'Pelanggan created successfully.');
         } catch (\Exception $e) {
             return back()
                 ->with('error', 'Something went wrong! Please try again.')
@@ -74,15 +76,17 @@ class PelangganController extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'nomor_telepon' => 'sometimes|required|string|max:15',
-            'alamat' => 'sometimes|nullable|string|max:255',
+            'nama_lengkap' => 'required|string|max:15',
+            'nomor_telepon' => 'required|string|max:15',
+            'email' => 'required|string|email|max:255|unique:pelanggan',
+            'alamat_lengkap' => 'sometimes|nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 422);
         }
 
-        $pelanggan->update($request->only(['nomor_telepon', 'alamat']));
+        $pelanggan->update($request->only(['nama_lengkap', 'nomor_telepon','email', 'alamat_lengkap']));
         return response()->json(['message' => 'Pelanggan updated successfully.', 'data' => $pelanggan]);
     }
 

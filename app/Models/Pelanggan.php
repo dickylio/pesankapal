@@ -15,7 +15,7 @@ class Pelanggan extends Model
         'nama_lengkap',
         'nomor_telepon',
         'email',
-        'alamat'
+        'alamat_lengkap'
     ];
 
     #Relasi dengan tabel user
